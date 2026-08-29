@@ -1,0 +1,42 @@
+version: '3.9'
+
+services:
+  mongodb:
+    image: mongo:7
+    container_name: dms-mongo
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongo-data:/data/db
+    environment:
+      MONGO_INITDB_DATABASE: dms
+    restart: unless-stopped
+
+  api:
+    build:
+      context: .
+      target: production
+    container_name: dms-api
+    ports:
+      - '4000:4000'
+    depends_on:
+      - mongodb
+    env_file:
+      - .env
+    environment:
+      MONGODB_URI: mongodb://mongodb:27017/dms
+    restart: unless-stopped
+
+  web:
+    build:
+      context: ../dms-frontend
+      target: production
+    container_name: dms-web
+    ports:
+      - '3000:80'
+    depends_on:
+      - api
+    restart: unless-stopped
+
+volumes:
+  mongo-data:

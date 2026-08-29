@@ -1,0 +1,79 @@
+# ─────────────────────────────────────────────────────────────
+#  DMS monorepo — shared .gitignore (dms-backend/ + dms-frontend/)
+#  Patterns without a leading slash match at any depth, so these
+#  cover both apps. Root-only entries use a leading slash.
+# ─────────────────────────────────────────────────────────────
+
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+.npm/
+jspm_packages/
+
+# Build output
+dist/
+dist-ssr/
+build/
+out/
+*.tsbuildinfo
+
+# Environment / secrets — never commit real values
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Test / coverage
+coverage/
+.nyc_output/
+*.lcov
+
+# Caches
+.cache/
+.vite/
+.eslintcache
+.stylelintcache
+.parcel-cache/
+
+# Editors / IDE
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*~
+
+# OS cruft
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Local / temp
+*.local
+tmp/
+temp/
+.deploy/
+
+# Docker (keep compose + Dockerfiles; ignore local overrides)
+docker-compose.override.yml
