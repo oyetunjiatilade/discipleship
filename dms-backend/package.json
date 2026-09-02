@@ -8,6 +8,7 @@
     "build": "tsc",
     "start": "node dist/server.js",
     "seed": "tsx scripts/seed.ts",
+    "reset-admin-password": "tsx scripts/reset-admin-password.ts",
     "migrate:branches": "tsx scripts/migrate-branches.ts",
     "lint": "eslint src/ --ext .ts",
     "lint:fix": "eslint src/ --ext .ts --fix",
