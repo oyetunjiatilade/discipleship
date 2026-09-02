@@ -51,7 +51,7 @@ Create an **A record**:
 |------|------|-------|
 | `discipleship.slchurchng.org` | `A` | `62.238.33.106` |
 
-Verify: `dig +short discipleship.slchurchng.org` → `62.238.33.106`.
+Verify: `dig +short discipleship.slchurchng.org` → `62.238.33.106`. **Done** (2026-09).
 
 ### 3. MongoDB Atlas
 
@@ -117,13 +117,24 @@ Save the generated admin password if you left `SEED_ADMIN_PASSWORD` blank.
 
 ### 7. TLS (after DNS resolves)
 
+The repo vhost (`deploy/nginx/discipleship.slchurchng.org.conf`) already contains
+the `:443` server block and the HTTP→HTTPS redirect — it is self-contained (no
+certbot-managed includes) so `dms-nginx-sync` keeps HTTPS intact on every deploy.
+You only need to issue the certificate once; **do not** use `certbot --nginx`
+(which would rewrite the vhost):
+
 ```bash
-sudo certbot --nginx -d discipleship.slchurchng.org --redirect -m <ops-email> --agree-tos
+# 1. issue the cert (works against the current HTTP-only live vhost)
+sudo certbot certonly --nginx -d discipleship.slchurchng.org \
+  -m <ops-email> --agree-tos --no-eff-email
+
+# 2. install the TLS vhost from the repo + reload nginx
+sudo /usr/local/sbin/dms-nginx-sync      # or just run deploy/deploy.sh main
 ```
 
-certbot rewrites the vhost to add `:443` + an HTTP→HTTPS redirect and installs a
-renewal timer. **Auth only works over HTTPS** (the refresh cookie is `Secure`), so
-do this before handing the URL out.
+certbot installs a renewal timer (nginx authenticator, fully automatic).
+**Auth only works over HTTPS** (the refresh cookie is `Secure`), so do this
+before handing the URL out.
 
 ---
 

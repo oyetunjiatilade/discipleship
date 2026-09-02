@@ -466,12 +466,16 @@ under **PM2** (`dms-api`), resurrected on boot by `pm2-tunji.service`.
 - `app.ts`: `app.set('trust proxy', 'loopback')` — correct `req.ip` / rate-limiting / protocol
   behind nginx on 127.0.0.1, without letting external clients spoof `X-Forwarded-For`.
 
-## Still required before go-live (not automatable here)
-1. DNS `A`: `discipleship.slchurchng.org` → `62.238.33.106`.
-2. Atlas: whitelist the server IP, create a `dms` r/w user, paste the SRV string into
-   `backend.env` as `MONGODB_URI`.
-3. `git clone <repo> /var/www/dms/app`, create `backend.env`, `check-env.sh` must pass.
-4. `RUN_SEED=1 deploy/deploy.sh main`, then `sudo certbot --nginx -d discipleship.slchurchng.org`
-   (auth needs HTTPS — the refresh cookie is `Secure` in production).
-5. `SMS_PROVIDER=mock` until a Termii key exists → convert phone-OTP login won't send codes;
-   admin/mentor email+password login works regardless.
+## Go-live checklist — status (2026-09-02)
+1. ✅ DNS `A`: `discipleship.slchurchng.org` → `62.238.33.106`.
+2. ✅ Atlas: server IP whitelisted, `dms` r/w user, SRV string in `backend.env`.
+3. ✅ Repo cloned at `/var/www/dms/app`, `backend.env` created, `check-env.sh` passes.
+4. ✅ First deploy done — super_admin (`admin@slchurchng.org`) + "Believers Class" course seeded.
+5. ✅ `SMS_PROVIDER=termii` (sender `HBridge`) — convert phone-OTP login/registration live.
+6. ⏳ **TLS**: issue the cert once with `sudo certbot certonly --nginx -d discipleship.slchurchng.org`
+   then `sudo /usr/local/sbin/dms-nginx-sync`. The repo vhost already carries the self-contained
+   `:443` block + HTTP→HTTPS redirect, so `dms-nginx-sync` keeps HTTPS across deploys — do **not**
+   run `certbot --nginx` (it would rewrite the vhost). Auth needs HTTPS (refresh cookie is `Secure`).
+7. ⏳ Post-TLS: log in as super_admin (forced password change), create the first branch(es),
+   then branch admins / mentors / cohorts.
+8. ⏳ Rotate `CLOUDINARY_API_SECRET` (currently empty/dev value — `check-env.sh` warns).
