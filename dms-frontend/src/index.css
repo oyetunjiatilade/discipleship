@@ -4,25 +4,28 @@
 
 @layer base {
   :root {
+    /* Brand palette derived from the Supernatural Life Church logo
+       (flame gradient: red-orange -> gold). See tailwind.config.ts
+       `brand`/`accent` scales for the full ramps these pull from. */
     --background: 0 0% 98%;
-    --foreground: 215 25% 14%;
+    --foreground: 20 12% 14%;
     --card: 0 0% 100%;
-    --card-foreground: 215 25% 14%;
+    --card-foreground: 20 12% 14%;
     --popover: 0 0% 100%;
-    --popover-foreground: 215 25% 14%;
-    --primary: 204 61% 28%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 20% 95%;
-    --secondary-foreground: 215 25% 14%;
-    --muted: 210 20% 96%;
-    --muted-foreground: 215 16% 47%;
-    --accent: 38 74% 45%;
-    --accent-foreground: 0 0% 100%;
+    --popover-foreground: 20 12% 14%;
+    --primary: 6 78% 46%; /* brand-500 */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 30 20% 95%;
+    --secondary-foreground: 20 12% 14%;
+    --muted: 30 15% 96%;
+    --muted-foreground: 20 8% 45%;
+    --accent: 36 88% 53%; /* accent-500 */
+    --accent-foreground: 20 12% 14%; /* dark text on gold, matching the logo */
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
-    --border: 214 20% 88%;
-    --input: 214 20% 88%;
-    --ring: 204 61% 28%;
+    --border: 30 15% 88%;
+    --input: 30 15% 88%;
+    --ring: 6 78% 46%;
     --radius: 0.5rem;
   }
 }

@@ -15,6 +15,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { STAGE_LABELS, type DiscipleshipStage } from '@/constants/enums';
 import apiClient from '@/api/client';
+import slcLogo from '@/assets/slc-logo.png';
 
 const bottomNavItems = [
   { to: '/dashboard', icon: LayoutDashboard, label: 'Home', end: true },
@@ -51,9 +52,7 @@ export function ConvertLayout() {
       <header className="sticky top-0 z-30 border-b bg-white shadow-sm">
         <div className="mx-auto flex h-14 max-w-2xl items-center gap-3 px-4">
           {/* Brand */}
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-500 font-display text-xs font-bold text-white">
-            TB
-          </div>
+          <img src={slcLogo} alt="Supernatural Life Church" className="h-8 w-8 shrink-0 object-contain" />
           <div className="min-w-0 flex-1">
             <p className="truncate font-display text-sm font-bold text-brand-800">
               Hi, {user?.firstName || 'there'}!

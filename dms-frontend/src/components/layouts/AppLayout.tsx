@@ -1,4 +1,5 @@
 import { Outlet } from 'react-router-dom';
+import slcLogo from '@/assets/slc-logo.png';
 
 /**
  * Minimal layout for public pages (login, registration).
@@ -12,6 +13,11 @@ export function AppLayout() {
       <div className="pointer-events-none absolute bottom-0 right-0 h-96 w-96 translate-x-1/3 translate-y-1/3 rounded-full bg-accent-100/40 blur-3xl" />
 
       <div className="relative z-10 w-full max-w-md">
+        <img
+          src={slcLogo}
+          alt="Supernatural Life Church"
+          className="mx-auto mb-6 h-24 w-24 object-contain drop-shadow-md"
+        />
         <Outlet />
       </div>
     </div>

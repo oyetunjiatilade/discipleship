@@ -1,8 +1,9 @@
 import { Outlet, useNavigate } from 'react-router-dom';
-import { HeartHandshake, LogOut } from 'lucide-react';
+import { LogOut } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useAuthStore } from '@/stores/authStore';
 import apiClient from '@/api/client';
+import slcLogo from '@/assets/slc-logo.png';
 
 export function MentorLayout() {
   const { user, logout } = useAuthStore();
@@ -23,7 +24,9 @@ export function MentorLayout() {
     <div className="min-h-screen bg-gray-50">
       <header className="sticky top-0 z-10 flex items-center justify-between border-b bg-brand-800 px-4 py-3 text-white">
         <div className="flex items-center gap-2">
-          <HeartHandshake className="h-6 w-6 text-accent-400" />
+          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white p-1">
+            <img src={slcLogo} alt="Supernatural Life Church" className="h-full w-full object-contain" />
+          </div>
           <div>
             <p className="font-display text-lg font-bold leading-none">My Flock</p>
             <p className="text-xs text-brand-200">{user?.firstName} {user?.lastName}</p>

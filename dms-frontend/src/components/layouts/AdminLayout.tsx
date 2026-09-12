@@ -24,6 +24,7 @@ import { useAuthStore } from '@/stores/authStore';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import apiClient from '@/api/client';
+import slcLogo from '@/assets/slc-logo.png';
 
 interface NavItem {
   to: string;
@@ -86,8 +87,8 @@ export function AdminLayout() {
       >
         {/* Brand */}
         <div className="flex h-16 items-center gap-3 px-5">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent-500 font-display text-sm font-bold text-white">
-            TB
+          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white p-1">
+            <img src={slcLogo} alt="Supernatural Life Church" className="h-full w-full object-contain" />
           </div>
           <div>
             <p className="font-display text-sm font-bold text-white">Team Barnabas</p>

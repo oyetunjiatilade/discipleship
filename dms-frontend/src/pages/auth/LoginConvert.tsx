@@ -55,9 +55,6 @@ export default function LoginConvert() {
   return (
     <Card className="border-0 shadow-xl shadow-brand-100/50">
       <CardHeader className="text-center">
-        <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-500 font-display text-lg font-bold text-white shadow-lg shadow-brand-500/30">
-          TB
-        </div>
         <CardTitle className="font-display text-2xl text-brand-800">Welcome Back</CardTitle>
         <CardDescription>
           {step === 'phone'
