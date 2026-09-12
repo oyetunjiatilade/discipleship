@@ -9,6 +9,7 @@
     "start": "node dist/server.js",
     "seed": "tsx scripts/seed.ts",
     "reset-admin-password": "tsx scripts/reset-admin-password.ts",
+    "qa-issue-otp": "tsx scripts/qa-issue-otp.ts",
     "migrate:branches": "tsx scripts/migrate-branches.ts",
     "lint": "eslint src/ --ext .ts",
     "lint:fix": "eslint src/ --ext .ts --fix",
