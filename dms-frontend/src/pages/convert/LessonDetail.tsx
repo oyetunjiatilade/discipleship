@@ -258,34 +258,36 @@ export default function LessonDetail() {
           )}
         >
           {/* Notes Header */}
-          <div className="flex items-center justify-between border-b bg-gray-50 px-4 py-3">
-            <div className="flex items-center gap-2">
-              <FileText className="h-5 w-5 text-brand-500" />
-              <span className="text-sm font-semibold text-gray-800">Lesson Notes</span>
+          <div className="flex items-center justify-between gap-2 border-b bg-gray-50 px-4 py-3">
+            <div className="flex min-w-0 items-center gap-2">
+              <FileText className="h-5 w-5 shrink-0 text-brand-500" />
+              <span className="truncate text-sm font-semibold text-gray-800">Lesson Notes</span>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex shrink-0 items-center gap-1">
               <a
                 href={lesson.notesUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-1 rounded-md px-2 py-1 text-xs text-gray-500 hover:bg-gray-200 hover:text-gray-700"
+                title="Open in new tab"
               >
                 <ExternalLink className="h-3.5 w-3.5" />
-                Open in new tab
+                <span className="hidden sm:inline">Open in new tab</span>
               </a>
               <button
                 onClick={() => setNotesExpanded(!notesExpanded)}
                 className="flex items-center gap-1 rounded-md px-2 py-1 text-xs text-gray-500 hover:bg-gray-200 hover:text-gray-700"
+                title={notesExpanded ? 'Exit fullscreen' : 'Fullscreen'}
               >
                 {notesExpanded ? (
                   <>
                     <Minimize2 className="h-3.5 w-3.5" />
-                    Exit fullscreen
+                    <span className="hidden sm:inline">Exit fullscreen</span>
                   </>
                 ) : (
                   <>
                     <Maximize2 className="h-3.5 w-3.5" />
-                    Fullscreen
+                    <span className="hidden sm:inline">Fullscreen</span>
                   </>
                 )}
               </button>

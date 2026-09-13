@@ -106,7 +106,7 @@ export default function AdminsPage() {
 
       {showCreate && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
-          <Card className="w-full max-w-md">
+          <Card className="max-h-[90vh] w-full max-w-md overflow-y-auto">
             <CardHeader className="flex flex-row items-center justify-between pb-2">
               <CardTitle className="text-lg">Add Admin</CardTitle>
               <button

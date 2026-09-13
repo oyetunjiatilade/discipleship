@@ -90,7 +90,7 @@ export default function CoursesAdminPage() {
 
       {showCreate && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
-          <Card className="w-full max-w-md">
+          <Card className="max-h-[90vh] w-full max-w-md overflow-y-auto">
             <CardHeader className="flex flex-row items-center justify-between pb-2">
               <CardTitle className="text-lg">New Course</CardTitle>
               <button onClick={() => setShowCreate(false)} className="rounded-md p-1 text-gray-400 hover:bg-gray-100"><X className="h-5 w-5" /></button>
