@@ -11,6 +11,7 @@
     "reset-admin-password": "tsx scripts/reset-admin-password.ts",
     "qa-issue-otp": "tsx scripts/qa-issue-otp.ts",
     "qa-create-staff": "tsx scripts/qa-create-staff.ts",
+    "qa-cleanup": "tsx scripts/qa-cleanup.ts",
     "migrate:branches": "tsx scripts/migrate-branches.ts",
     "lint": "eslint src/ --ext .ts",
     "lint:fix": "eslint src/ --ext .ts --fix",
