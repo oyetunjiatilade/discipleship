@@ -198,7 +198,7 @@ class OtpService {
         body: JSON.stringify({
           to: phone,
           from: senderId,
-          sms: `Your Team Barnabas verification code is: ${code}. Valid for ${authConfig.otp.expiryMinutes} minutes.`,
+          sms: `Your convert verification code is ${code}. This code expires in ${authConfig.otp.expiryMinutes} min. Powered by Supernatural life church.`,
           type: 'plain',
           channel: env.SMS_CHANNEL,
           api_key: apiKey,
