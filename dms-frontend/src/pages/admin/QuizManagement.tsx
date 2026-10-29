@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useParams, useSearchParams, Link, useNavigate } from 'react-router-dom';
 import { adminApi } from '@/api/adminApi';
 import type { QuizAdminView } from '@/types/models';
 import type { QuestionInput, CreateQuizPayload, UpdateQuizPayload } from '@/api/adminApi';
@@ -38,6 +38,7 @@ function emptyQuestion(sortOrder: number): QuestionInput {
 
 export default function QuizManagement() {
   const { lessonId } = useParams<{ lessonId: string }>();
+  const courseId = useSearchParams()[0].get('courseId');
   const navigate = useNavigate();
   const toast = useToast();
 
@@ -235,7 +236,7 @@ export default function QuizManagement() {
       <div className="flex items-center justify-between">
         <div>
           <Link
-            to="/admin/lessons"
+            to={`/admin/lessons${courseId ? `?courseId=${courseId}` : ''}`}
             className="mb-2 inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-brand-500"
           >
             <ArrowLeft className="h-4 w-4" /> Back to Lessons

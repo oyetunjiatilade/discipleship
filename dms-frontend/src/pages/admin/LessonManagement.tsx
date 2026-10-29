@@ -1,5 +1,5 @@
 import { useState, useCallback, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useAsync } from '@/hooks/useAsync';
 import { adminApi } from '@/api/adminApi';
 import { courseApi } from '@/api/courseApi';
@@ -90,8 +90,14 @@ export default function LessonManagement() {
   const toast = useToast();
   const navigate = useNavigate();
 
-  const [selectedCourseId, setSelectedCourseId] = useState('');
+  // Selected course lives in the URL (?courseId=) so Courses → "view lessons" can deep-link here.
+  // Empty means the primary (Believers Class) course.
+  const [searchParams, setSearchParams] = useSearchParams();
+  const selectedCourseId = searchParams.get('courseId') || '';
+  const setSelectedCourseId = (id: string) =>
+    setSearchParams(id ? { courseId: id } : {}, { replace: true });
   const { data: courses } = useAsync(() => courseApi.adminListCourses(), []);
+  const selectedCourse = courses?.find((c) => c.id === selectedCourseId);
 
   const {
     data: lessons,
@@ -430,6 +436,7 @@ export default function LessonManagement() {
         <div>
           <h1 className="font-display text-2xl font-bold text-brand-800">Manage Lessons</h1>
           <p className="text-sm text-muted-foreground">
+            {selectedCourse ? `${selectedCourse.title} · ` : ''}
             {sortedLessons.length} lesson{sortedLessons.length !== 1 ? 's' : ''}
           </p>
           {(courses?.length ?? 0) > 1 && (
@@ -518,7 +525,7 @@ export default function LessonManagement() {
 
                 {/* Actions */}
                 <div className="flex shrink-0 items-center gap-1">
-                  <button onClick={() => navigate(`/admin/lessons/${lesson.id}/quiz`)}
+                  <button onClick={() => navigate(`/admin/lessons/${lesson.id}/quiz${selectedCourseId ? `?courseId=${selectedCourseId}` : ''}`)}
                     className={cn('rounded-md p-2 transition-colors', lesson.hasQuiz ? 'text-violet-500 hover:bg-violet-50' : 'text-gray-400 hover:bg-gray-100')}
                     title={lesson.hasQuiz ? 'Edit Quiz' : 'Add Quiz'}>
                     <HelpCircle className="h-4 w-4" />

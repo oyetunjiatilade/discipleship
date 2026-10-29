@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAsync } from '@/hooks/useAsync';
 import { courseApi } from '@/api/courseApi';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -8,10 +9,11 @@ import { Label } from '@/components/ui/label';
 import { Badge } from '@/components/ui/badge';
 import { Spinner } from '@/components/ui/spinner';
 import { useToast } from '@/components/ui/toast';
-import { BookOpen, Plus, X, Save } from 'lucide-react';
+import { BookOpen, Plus, X, Save, ChevronRight } from 'lucide-react';
 
 export default function CoursesAdminPage() {
   const toast = useToast();
+  const navigate = useNavigate();
   const { data: courses, loading, refetch } = useAsync(() => courseApi.adminListCourses());
 
   const [showCreate, setShowCreate] = useState(false);
@@ -37,6 +39,10 @@ export default function CoursesAdminPage() {
     }
   };
 
+  // The Lessons page treats "no courseId" as the primary (Believers Class) course.
+  const openLessons = (id: string, isPrimary?: boolean) =>
+    navigate(isPrimary ? '/admin/lessons' : `/admin/lessons?courseId=${id}`);
+
   const toggleActive = async (id: string, isActive: boolean) => {
     try {
       await courseApi.updateCourse(id, { isActive: !isActive });
@@ -51,7 +57,7 @@ export default function CoursesAdminPage() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="font-display text-2xl font-bold text-brand-800">Courses</h1>
-          <p className="text-sm text-muted-foreground">The Believers Class plus any additional courses. Manage lessons per course under Lessons.</p>
+          <p className="text-sm text-muted-foreground">The Believers Class plus any additional courses. Click a course to view and add its lessons.</p>
         </div>
         <Button className="gap-2" onClick={() => setShowCreate(true)}>
           <Plus className="h-4 w-4" /> New Course
@@ -63,7 +69,14 @@ export default function CoursesAdminPage() {
       ) : (
         <div className="grid gap-3 sm:grid-cols-2">
           {(courses || []).map((c) => (
-            <Card key={c.id}>
+            <Card
+              key={c.id}
+              role="button"
+              tabIndex={0}
+              onClick={() => openLessons(c.id, c.isPrimary)}
+              onKeyDown={(e) => { if (e.key === 'Enter') openLessons(c.id, c.isPrimary); }}
+              className="cursor-pointer transition-colors hover:border-brand-300 hover:bg-brand-50/40"
+            >
               <CardContent className="flex items-start gap-3 p-4">
                 <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-brand-100 text-brand-600">
                   <BookOpen className="h-5 w-5" />
@@ -76,9 +89,12 @@ export default function CoursesAdminPage() {
                   </div>
                   <p className="line-clamp-2 text-xs text-muted-foreground">{c.description}</p>
                   <p className="mt-0.5 text-xs text-muted-foreground">{c.totalLessons} lesson{c.totalLessons !== 1 ? 's' : ''}</p>
+                  <p className="mt-1 inline-flex items-center gap-0.5 text-xs font-medium text-brand-600">
+                    View &amp; add lessons <ChevronRight className="h-3.5 w-3.5" />
+                  </p>
                 </div>
                 {!c.isPrimary && (
-                  <Button variant="ghost" size="sm" className="text-xs" onClick={() => toggleActive(c.id, c.isActive)}>
+                  <Button variant="ghost" size="sm" className="text-xs" onClick={(e) => { e.stopPropagation(); toggleActive(c.id, c.isActive); }}>
                     {c.isActive ? 'Deactivate' : 'Activate'}
                   </Button>
                 )}

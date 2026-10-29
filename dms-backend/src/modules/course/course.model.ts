@@ -51,6 +51,8 @@ const courseSchema = new Schema<ICourse>(
     timestamps: true,
     toJSON: {
       transform(_doc, ret: Record<string, unknown>) {
+        // Frontend reads `course.id` (e.g. course pickers) — expose it alongside _id.
+        ret.id = String(ret._id);
         delete ret.__v;
         return ret;
       },
