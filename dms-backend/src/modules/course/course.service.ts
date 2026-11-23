@@ -24,8 +24,8 @@ interface CreateLessonInput {
   title: string;
   description: string;
   sortOrder: number;
-  videoUrl: string;
-  videoPublicId: string;
+  videoUrl?: string;
+  videoPublicId?: string;
   notesUrl: string;
   notesPublicId: string;
   estimatedMinutes?: number;
@@ -200,8 +200,8 @@ class CourseService {
       title: input.title,
       description: input.description,
       sortOrder: input.sortOrder,
-      videoUrl: input.videoUrl,
-      videoPublicId: input.videoPublicId,
+      videoUrl: input.videoUrl ?? '',
+      videoPublicId: input.videoPublicId ?? '',
       notesUrl: input.notesUrl,
       notesPublicId: input.notesPublicId,
       estimatedMinutes: input.estimatedMinutes ?? null,

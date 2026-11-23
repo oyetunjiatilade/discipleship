@@ -106,15 +106,15 @@ const lessonSchema = new Schema<ILesson>(
       min: 1,
     },
 
-    // ── Cloudinary video ──
+    // ── Cloudinary video (optional — '' when the lesson has no video) ──
     videoUrl: {
       type: String,
-      required: true,
+      default: '',
       trim: true,
     },
     videoPublicId: {
       type: String,
-      required: true,
+      default: '',
       trim: true,
     },
 

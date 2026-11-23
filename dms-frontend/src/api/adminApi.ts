@@ -36,8 +36,8 @@ export interface CreateLessonPayload {
   title: string;
   description: string;
   sortOrder: number;
-  videoUrl: string;
-  videoPublicId: string;
+  videoUrl?: string; // optional — omit or '' for a lesson without video
+  videoPublicId?: string;
   notesUrl: string;
   notesPublicId: string;
   estimatedMinutes?: number;

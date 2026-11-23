@@ -19,6 +19,14 @@ const cloudinaryPublicIdSchema = z
   .max(500, 'Public ID must be at most 500 characters');
 
 /**
+ * Lesson video is optional: omitted or '' means "no video" (and '' on update clears it).
+ */
+const optionalVideoUrlSchema = z.union([cloudinaryUrlSchema, z.literal('')]).optional();
+const optionalVideoPublicIdSchema = z
+  .union([cloudinaryPublicIdSchema, z.literal('')])
+  .optional();
+
+/**
  * Reusable MongoDB ObjectId param validator.
  */
 const objectIdParamSchema = z
@@ -91,8 +99,8 @@ export const createLessonSchema = {
       .number()
       .int('Sort order must be a whole number')
       .min(1, 'Sort order must be at least 1'),
-    videoUrl: cloudinaryUrlSchema,
-    videoPublicId: cloudinaryPublicIdSchema,
+    videoUrl: optionalVideoUrlSchema,
+    videoPublicId: optionalVideoPublicIdSchema,
     notesUrl: cloudinaryUrlSchema,
     notesPublicId: cloudinaryPublicIdSchema,
     estimatedMinutes: z
@@ -130,8 +138,8 @@ export const updateLessonSchema = {
         .min(10, 'Description must be at least 10 characters')
         .max(5000, 'Description must be at most 5000 characters')
         .optional(),
-      videoUrl: cloudinaryUrlSchema.optional(),
-      videoPublicId: cloudinaryPublicIdSchema.optional(),
+      videoUrl: optionalVideoUrlSchema,
+      videoPublicId: optionalVideoPublicIdSchema,
       notesUrl: cloudinaryUrlSchema.optional(),
       notesPublicId: cloudinaryPublicIdSchema.optional(),
       estimatedMinutes: z

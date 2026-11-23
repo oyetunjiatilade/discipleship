@@ -273,7 +273,6 @@ export default function LessonManagement() {
     const order = parseInt(form.sortOrder, 10);
     if (isNaN(order) || order < 1) errors.sortOrder = 'Must be a whole number ≥ 1';
 
-    if (!form.videoUrl) errors.videoUrl = 'Please upload a video file';
     if (!form.notesUrl) {
       if (notesMode === 'text' && notesTextContent.trim().length >= 10) {
         errors.notesUrl = 'Click "Generate PDF" to convert your notes before saving';
@@ -638,7 +637,8 @@ export default function LessonManagement() {
               {/* ═══════ VIDEO UPLOAD ═══════ */}
               <div className="space-y-3 rounded-lg border bg-gray-50/50 p-4">
                 <p className="text-xs font-semibold uppercase tracking-wide text-gray-500">
-                  <Video className="mr-1 inline h-3.5 w-3.5" />Lesson Video
+                  <Video className="mr-1 inline h-3.5 w-3.5" />Lesson Video{' '}
+                  <span className="font-normal normal-case tracking-normal text-gray-400">(optional)</span>
                 </p>
 
                 <input
@@ -672,12 +672,25 @@ export default function LessonManagement() {
                       <CheckCircle2 className="h-4 w-4" />
                       <span className="truncate">{videoFileName || 'Video uploaded'}</span>
                     </div>
-                    <button
-                      onClick={() => videoInputRef.current?.click()}
-                      className="text-xs font-medium text-brand-600 hover:underline"
-                    >
-                      Replace
-                    </button>
+                    <div className="flex shrink-0 items-center gap-3">
+                      <button
+                        type="button"
+                        onClick={() => videoInputRef.current?.click()}
+                        className="text-xs font-medium text-brand-600 hover:underline"
+                      >
+                        Replace
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setVideoFileName('');
+                          setForm((prev) => ({ ...prev, videoUrl: '', videoPublicId: '' }));
+                        }}
+                        className="text-xs font-medium text-red-600 hover:underline"
+                      >
+                        Remove
+                      </button>
+                    </div>
                   </div>
                 ) : (
                   <button
@@ -685,15 +698,16 @@ export default function LessonManagement() {
                     onClick={() => videoInputRef.current?.click()}
                     className={cn(
                       'flex w-full flex-col items-center justify-center gap-2 rounded-lg border-2 border-dashed px-4 py-8 transition-colors hover:border-brand-400 hover:bg-brand-50/30',
-                      formErrors.videoUrl ? 'border-red-300 bg-red-50/30' : 'border-gray-300'
+                      'border-gray-300'
                     )}
                   >
                     <Upload className="h-8 w-8 text-gray-400" />
                     <span className="text-sm font-medium text-gray-600">Click to upload video</span>
-                    <span className="text-xs text-gray-400">MP4, WebM, OGG, MOV, AVI — max 500 MB</span>
+                    <span className="text-xs text-gray-400">
+                      MP4, WebM, OGG, MOV, AVI — max 500 MB. You can skip this and add a video later.
+                    </span>
                   </button>
                 )}
-                {formErrors.videoUrl && <p className="text-xs text-red-500">{formErrors.videoUrl}</p>}
               </div>
 
               {/* ═══════ NOTES UPLOAD / TEXT ═══════ */}

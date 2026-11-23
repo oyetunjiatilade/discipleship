@@ -104,8 +104,8 @@ export const createLessonSchema = z.object({
     .number()
     .int('Sort order must be a whole number')
     .min(1, 'Sort order must be at least 1'),
-  videoUrl: cloudinaryUrlSchema,
-  videoPublicId: cloudinaryPublicIdSchema,
+  videoUrl: cloudinaryUrlSchema.or(z.literal('')).optional(), // video is optional
+  videoPublicId: cloudinaryPublicIdSchema.or(z.literal('')).optional(),
   notesUrl: cloudinaryUrlSchema,
   notesPublicId: cloudinaryPublicIdSchema,
   estimatedMinutes: z

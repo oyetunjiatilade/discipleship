@@ -175,8 +175,10 @@ export default function LessonDetail() {
       </div>
 
       {/* ── Video Player ── */}
+      {/* Lessons without a video simply skip the player. */}
+      {lesson.videoUrl && (
       <Card className="overflow-hidden">
-        {lesson.videoUrl ? (
+        {
           lowDataMode && !showVideo ? (
             <CardContent className="flex aspect-video flex-col items-center justify-center gap-3 bg-gray-900 text-center">
               <WifiOff className="h-10 w-10 text-gray-400" />
@@ -199,15 +201,9 @@ export default function LessonDetail() {
               </video>
             </div>
           )
-        ) : (
-          <CardContent className="flex aspect-video items-center justify-center bg-gray-50">
-            <div className="flex flex-col items-center gap-2 text-gray-400">
-              <PlayCircle className="h-12 w-12" />
-              <p className="text-sm">No video available</p>
-            </div>
-          </CardContent>
-        )}
+        }
       </Card>
+      )}
 
       {/* ── Description ── */}
       <Card>
