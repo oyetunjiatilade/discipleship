@@ -6,12 +6,12 @@ import {
 
 const countCards = (s: DiscipleshipStats) => [
   { label: 'Total Converts', value: s.counts.total, icon: Users, color: 'text-brand-500', bg: 'bg-brand-50', sub: undefined as string | undefined },
-  { label: 'Contacted / Reached', value: s.counts.contacted, icon: PhoneCall, color: 'text-sky-500', bg: 'bg-sky-50', sub: `${s.counts.contactedThisWeek} this week` },
+  { label: 'Contacted / Reached', value: s.counts.contacted, icon: PhoneCall, color: 'text-blue-500', bg: 'bg-blue-50', sub: `${s.counts.contactedThisWeek} this week` },
   { label: 'Attended Class', value: s.counts.attended, icon: GraduationCap, color: 'text-amber-500', bg: 'bg-amber-50', sub: undefined },
-  { label: 'Completed Class', value: s.counts.completed, icon: CheckCircle2, color: 'text-emerald-500', bg: 'bg-emerald-50', sub: undefined },
+  { label: 'Completed Class', value: s.counts.completed, icon: CheckCircle2, color: 'text-green-500', bg: 'bg-green-50', sub: undefined },
   { label: 'Baptized', value: s.counts.baptized, icon: Droplets, color: 'text-cyan-600', bg: 'bg-cyan-50', sub: undefined },
   { label: 'Integrated / Transferred', value: s.counts.integrated, icon: UserCheck, color: 'text-violet-500', bg: 'bg-violet-50', sub: undefined },
-  { label: 'Outstanding', value: s.counts.outstanding, icon: AlertTriangle, color: 'text-rose-500', bg: 'bg-rose-50', sub: 'yet to finish the journey' },
+  { label: 'Outstanding', value: s.counts.outstanding, icon: AlertTriangle, color: 'text-red-500', bg: 'bg-red-50', sub: 'yet to finish the journey' },
 ];
 
 export function FunnelCounts({ stats }: { stats: DiscipleshipStats }) {
@@ -44,8 +44,8 @@ const rateCards = (s: DiscipleshipStats) => [
 ];
 
 function rateColor(v: number, bad?: boolean): string {
-  if (bad) return v >= 60 ? 'text-rose-600' : v >= 30 ? 'text-amber-600' : 'text-emerald-600';
-  return v >= 70 ? 'text-emerald-600' : v >= 40 ? 'text-amber-600' : 'text-rose-600';
+  if (bad) return v >= 60 ? 'text-red-600' : v >= 30 ? 'text-amber-600' : 'text-green-600';
+  return v >= 70 ? 'text-green-600' : v >= 40 ? 'text-amber-600' : 'text-red-600';
 }
 
 export function FunnelRates({ stats }: { stats: DiscipleshipStats }) {

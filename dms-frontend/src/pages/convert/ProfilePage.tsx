@@ -140,7 +140,7 @@ export default function ProfilePage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="font-display text-2xl font-bold text-brand-800">My Profile</h1>
+          <h1 className="font-display text-2xl font-bold text-black">My Profile</h1>
           <p className="text-sm text-muted-foreground">Your account information.</p>
         </div>
         {!editing && (

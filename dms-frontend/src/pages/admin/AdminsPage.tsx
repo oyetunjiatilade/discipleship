@@ -60,7 +60,7 @@ export default function AdminsPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="font-display text-2xl font-bold text-brand-800">Admins</h1>
+          <h1 className="font-display text-2xl font-bold text-black">Admins</h1>
           <p className="text-sm text-muted-foreground">
             Branch administrators and super admins. They sign in at{' '}
             <span className="font-mono text-brand-600">/admin/login</span>.

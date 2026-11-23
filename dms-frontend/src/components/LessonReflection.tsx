@@ -93,7 +93,7 @@ export function LessonReflection({ lessonId, memoryVerse, actionStep }: Props) {
                 className="flex w-full items-start gap-3 rounded-lg border p-3 text-left transition-colors hover:bg-gray-50"
               >
                 {actionDone ? (
-                  <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-emerald-500" />
+                  <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-green-500" />
                 ) : (
                   <Circle className="mt-0.5 h-5 w-5 shrink-0 text-gray-300" />
                 )}

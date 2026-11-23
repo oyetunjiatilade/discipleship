@@ -434,7 +434,7 @@ export default function LessonManagement() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="font-display text-2xl font-bold text-brand-800">Manage Lessons</h1>
+          <h1 className="font-display text-2xl font-bold text-black">Manage Lessons</h1>
           <p className="text-sm text-muted-foreground">
             {selectedCourse ? `${selectedCourse.title} · ` : ''}
             {sortedLessons.length} lesson{sortedLessons.length !== 1 ? 's' : ''}
@@ -531,7 +531,7 @@ export default function LessonManagement() {
                     <HelpCircle className="h-4 w-4" />
                   </button>
                   <button onClick={() => handleTogglePublish(lesson)} disabled={togglingId === lesson.id}
-                    className={cn('rounded-md p-2 transition-colors', lesson.isPublished ? 'text-emerald-500 hover:bg-emerald-50' : 'text-gray-400 hover:bg-gray-100')}
+                    className={cn('rounded-md p-2 transition-colors', lesson.isPublished ? 'text-green-500 hover:bg-green-50' : 'text-gray-400 hover:bg-gray-100')}
                     title={lesson.isPublished ? 'Unpublish' : 'Publish'}>
                     {togglingId === lesson.id ? <Spinner size="sm" /> : lesson.isPublished ? <Eye className="h-4 w-4" /> : <EyeOff className="h-4 w-4" />}
                   </button>
@@ -667,8 +667,8 @@ export default function LessonManagement() {
                     </div>
                   </div>
                 ) : form.videoUrl ? (
-                  <div className="flex items-center justify-between rounded-md border border-emerald-200 bg-emerald-50 px-3 py-2">
-                    <div className="flex items-center gap-2 text-sm text-emerald-700">
+                  <div className="flex items-center justify-between rounded-md border border-green-200 bg-green-50 px-3 py-2">
+                    <div className="flex items-center gap-2 text-sm text-green-700">
                       <CheckCircle2 className="h-4 w-4" />
                       <span className="truncate">{videoFileName || 'Video uploaded'}</span>
                     </div>
@@ -760,8 +760,8 @@ export default function LessonManagement() {
                         </div>
                       </div>
                     ) : form.notesUrl && notesFileName ? (
-                      <div className="flex items-center justify-between rounded-md border border-emerald-200 bg-emerald-50 px-3 py-2">
-                        <div className="flex items-center gap-2 text-sm text-emerald-700">
+                      <div className="flex items-center justify-between rounded-md border border-green-200 bg-green-50 px-3 py-2">
+                        <div className="flex items-center gap-2 text-sm text-green-700">
                           <CheckCircle2 className="h-4 w-4" />
                           <span className="truncate">{notesFileName}</span>
                         </div>
@@ -808,7 +808,7 @@ export default function LessonManagement() {
                       <p className="text-xs text-muted-foreground">
                         {notesTextContent.length} characters
                         {form.notesUrl && notesFileName === '(generated from text)' && (
-                          <span className="ml-2 text-emerald-600">
+                          <span className="ml-2 text-green-600">
                             <CheckCircle2 className="mr-0.5 inline h-3 w-3" />PDF generated
                           </span>
                         )}

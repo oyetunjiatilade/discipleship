@@ -22,19 +22,19 @@ import { STAGE_LABELS, type DiscipleshipStage } from '@/constants/enums';
 import { useState } from 'react';
 
 const stageColors: Record<string, string> = {
-  NEW_CONVERT: 'bg-sky-400',
+  NEW_CONVERT: 'bg-blue-400',
   HOLY_SPIRIT_FILLED: 'bg-purple-400',
   IN_CLASS: 'bg-amber-400',
-  CLASS_COMPLETED: 'bg-emerald-400',
+  CLASS_COMPLETED: 'bg-green-400',
   BAPTIZED: 'bg-brand-400',
   MEMBER_TRANSFERRED: 'bg-accent-400',
 };
 
 const stageBgColors: Record<string, string> = {
-  NEW_CONVERT: 'bg-sky-100 text-sky-700',
+  NEW_CONVERT: 'bg-blue-100 text-blue-700',
   HOLY_SPIRIT_FILLED: 'bg-purple-100 text-purple-700',
   IN_CLASS: 'bg-amber-100 text-amber-700',
-  CLASS_COMPLETED: 'bg-emerald-100 text-emerald-700',
+  CLASS_COMPLETED: 'bg-green-100 text-green-700',
   BAPTIZED: 'bg-brand-100 text-brand-700',
   MEMBER_TRANSFERRED: 'bg-accent-100 text-accent-700',
 };
@@ -84,7 +84,7 @@ export default function AdminReportsPage() {
       {/* Header */}
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="font-display text-2xl font-bold text-brand-800">Reports</h1>
+          <h1 className="font-display text-2xl font-bold text-black">Reports</h1>
           <p className="text-sm text-muted-foreground">
             Discipleship program analytics and insights.
           </p>
@@ -127,8 +127,8 @@ export default function AdminReportsPage() {
             label: 'New This Week',
             value: stats?.newThisWeek,
             icon: UserPlus,
-            color: 'text-emerald-500',
-            bg: 'bg-emerald-50',
+            color: 'text-green-500',
+            bg: 'bg-green-50',
           },
           {
             label: 'New This Month',
@@ -174,12 +174,12 @@ export default function AdminReportsPage() {
       {funnel && (
         <div className="space-y-4">
           <div>
-            <h2 className="font-display text-base font-bold text-brand-800">Discipleship Funnel</h2>
+            <h2 className="font-display text-base font-bold text-black">Discipleship Funnel</h2>
             <p className="text-sm text-muted-foreground">Where converts stand across the journey.</p>
           </div>
           <FunnelCounts stats={funnel} />
           <div className="pt-1">
-            <h3 className="mb-2 font-display text-sm font-bold text-brand-800">Rates</h3>
+            <h3 className="mb-2 font-display text-sm font-bold text-black">Rates</h3>
             <FunnelRates stats={funnel} />
           </div>
         </div>
@@ -247,7 +247,7 @@ export default function AdminReportsPage() {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-base">
-              <GraduationCap className="h-5 w-5 text-emerald-400" />
+              <GraduationCap className="h-5 w-5 text-green-400" />
               Program Metrics
             </CardTitle>
           </CardHeader>
@@ -265,7 +265,7 @@ export default function AdminReportsPage() {
                   className={cn(
                     'font-display text-3xl font-bold',
                     summary.averageCompletion >= 70
-                      ? 'text-emerald-600'
+                      ? 'text-green-600'
                       : summary.averageCompletion >= 40
                         ? 'text-amber-600'
                         : 'text-gray-900'
@@ -305,7 +305,7 @@ export default function AdminReportsPage() {
                     strokeDasharray={`${(summary.averageCompletion / 100) * 351.86} 351.86`}
                     className={
                       summary.averageCompletion >= 70
-                        ? 'text-emerald-500'
+                        ? 'text-green-500'
                         : summary.averageCompletion >= 40
                           ? 'text-amber-500'
                           : 'text-brand-500'

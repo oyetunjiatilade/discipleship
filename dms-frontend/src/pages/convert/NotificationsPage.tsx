@@ -33,9 +33,9 @@ const typeConfig: Record<
 > = {
   welcome: { icon: Sparkles, color: 'text-purple-600', bg: 'bg-purple-100' },
   stage_transition: { icon: ArrowUpDown, color: 'text-brand-600', bg: 'bg-brand-100' },
-  lesson_completed: { icon: BookOpen, color: 'text-emerald-600', bg: 'bg-emerald-100' },
+  lesson_completed: { icon: BookOpen, color: 'text-green-600', bg: 'bg-green-100' },
   course_completed: { icon: GraduationCap, color: 'text-accent-600', bg: 'bg-accent-100' },
-  quiz_passed: { icon: CheckCircle2, color: 'text-emerald-600', bg: 'bg-emerald-100' },
+  quiz_passed: { icon: CheckCircle2, color: 'text-green-600', bg: 'bg-green-100' },
   quiz_failed: { icon: XCircle, color: 'text-red-500', bg: 'bg-red-100' },
   admin_message: { icon: Megaphone, color: 'text-blue-600', bg: 'bg-blue-100' },
   system: { icon: Settings, color: 'text-gray-600', bg: 'bg-gray-100' },
@@ -117,7 +117,7 @@ export default function NotificationsPage() {
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="font-display text-xl font-bold text-brand-800">Notifications</h1>
+          <h1 className="font-display text-xl font-bold text-black">Notifications</h1>
           <p className="text-sm text-muted-foreground">
             {meta ? `${meta.total} notification${meta.total !== 1 ? 's' : ''}` : ''}
           </p>

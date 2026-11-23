@@ -126,12 +126,12 @@ export default function QuizPage() {
         <Card
           className={cn(
             'border-2',
-            result.passed ? 'border-emerald-200 bg-emerald-50' : 'border-red-200 bg-red-50'
+            result.passed ? 'border-green-200 bg-green-50' : 'border-red-200 bg-red-50'
           )}
         >
           <CardContent className="flex flex-col items-center py-8 text-center">
             {result.passed ? (
-              <Trophy className="h-14 w-14 text-emerald-500" />
+              <Trophy className="h-14 w-14 text-green-500" />
             ) : (
               <XCircle className="h-14 w-14 text-red-400" />
             )}
@@ -141,7 +141,7 @@ export default function QuizPage() {
             <p
               className={cn(
                 'mt-1 text-sm font-medium',
-                result.passed ? 'text-emerald-700' : 'text-red-700'
+                result.passed ? 'text-green-700' : 'text-red-700'
               )}
             >
               {result.passed ? 'Quiz Passed!' : `Need ${result.passingScore}% to pass`}
@@ -174,12 +174,12 @@ export default function QuizPage() {
                           key={opt.label}
                           className={cn(
                             'flex items-center gap-2 rounded-md px-3 py-1.5 text-sm',
-                            isCorrect && 'bg-emerald-50 text-emerald-800 font-medium',
+                            isCorrect && 'bg-green-50 text-green-800 font-medium',
                             isSelected && !isCorrect && 'bg-red-50 text-red-700',
                             !isCorrect && !isSelected && 'text-gray-600'
                           )}
                         >
-                          {isCorrect && <CheckCircle2 className="h-4 w-4 text-emerald-500" />}
+                          {isCorrect && <CheckCircle2 className="h-4 w-4 text-green-500" />}
                           {isSelected && !isCorrect && <XCircle className="h-4 w-4 text-red-400" />}
                           {!isCorrect && !isSelected && <span className="h-4 w-4" />}
                           <span className="font-mono text-xs text-gray-400">{opt.label}.</span>
@@ -233,7 +233,7 @@ export default function QuizPage() {
 
       {/* Quiz Header */}
       <div>
-        <h1 className="font-display text-lg font-bold text-brand-800">{quiz.title}</h1>
+        <h1 className="font-display text-lg font-bold text-black">{quiz.title}</h1>
         <div className="mt-1 flex items-center gap-3 text-xs text-muted-foreground">
           <span>{totalQ} question{totalQ !== 1 ? 's' : ''}</span>
           <span>Pass: {quiz.passingScore}%</span>
@@ -283,7 +283,7 @@ export default function QuizPage() {
                     className={cn(
                       'flex w-full items-center gap-3 rounded-lg border-2 p-3 text-left text-sm transition-all',
                       isSelected
-                        ? 'border-brand-500 bg-brand-50 text-brand-800'
+                        ? 'border-brand-500 bg-brand-50 text-gray-900'
                         : 'border-gray-200 hover:border-gray-300 hover:bg-gray-50'
                     )}
                   >

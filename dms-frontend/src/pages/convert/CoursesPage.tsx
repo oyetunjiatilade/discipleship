@@ -24,7 +24,7 @@ export default function CoursesPage() {
   return (
     <div className="space-y-4">
       <div>
-        <h1 className="font-display text-xl font-bold text-brand-800">Courses</h1>
+        <h1 className="font-display text-xl font-bold text-black">Courses</h1>
         <p className="text-sm text-muted-foreground">Your discipleship courses and their progress.</p>
       </div>
 
@@ -39,7 +39,7 @@ export default function CoursesPage() {
             >
               <CardContent className="p-4">
                 <div className="flex items-center gap-3">
-                  <div className={cn('flex h-10 w-10 shrink-0 items-center justify-center rounded-lg', done ? 'bg-emerald-100 text-emerald-600' : 'bg-brand-100 text-brand-600')}>
+                  <div className={cn('flex h-10 w-10 shrink-0 items-center justify-center rounded-lg', done ? 'bg-green-100 text-green-600' : 'bg-brand-100 text-brand-600')}>
                     {done ? <CheckCircle2 className="h-5 w-5" /> : <BookOpen className="h-5 w-5" />}
                   </div>
                   <div className="min-w-0 flex-1">
@@ -57,7 +57,7 @@ export default function CoursesPage() {
                     <span className="font-semibold">{c.percentComplete}%</span>
                   </div>
                   <div className="h-1.5 overflow-hidden rounded-full bg-gray-100">
-                    <div className={cn('h-full rounded-full', done ? 'bg-emerald-500' : 'bg-brand-500')} style={{ width: `${Math.min(c.percentComplete, 100)}%` }} />
+                    <div className={cn('h-full rounded-full', done ? 'bg-green-500' : 'bg-brand-500')} style={{ width: `${Math.min(c.percentComplete, 100)}%` }} />
                   </div>
                 </div>
               </CardContent>

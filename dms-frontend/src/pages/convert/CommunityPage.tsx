@@ -78,7 +78,7 @@ export default function CommunityPage() {
   if (!cohort) {
     return (
       <div className="space-y-4">
-        <h1 className="font-display text-2xl font-bold text-brand-800">Community</h1>
+        <h1 className="font-display text-2xl font-bold text-black">Community</h1>
         <Card>
           <CardContent className="flex flex-col items-center gap-2 py-16 text-center">
             <Users className="h-10 w-10 text-gray-300" />
@@ -93,7 +93,7 @@ export default function CommunityPage() {
   return (
     <div className="space-y-5">
       <div>
-        <h1 className="font-display text-2xl font-bold text-brand-800">{cohort.name}</h1>
+        <h1 className="font-display text-2xl font-bold text-black">{cohort.name}</h1>
         <p className="text-sm text-muted-foreground">Share a prayer, a praise, or encourage someone.</p>
       </div>
 

@@ -73,7 +73,7 @@ export default function MentorsPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="font-display text-2xl font-bold text-brand-800">Mentors</h1>
+          <h1 className="font-display text-2xl font-bold text-black">Mentors</h1>
           <p className="text-sm text-muted-foreground">Staff who shepherd converts one-to-one. Mentors sign in at <span className="font-mono text-brand-600">/mentor/login</span>.</p>
         </div>
         <Button className="gap-2" onClick={() => setShowCreate(true)}>

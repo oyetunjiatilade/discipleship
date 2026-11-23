@@ -40,7 +40,7 @@ export default function SessionsPage() {
   return (
     <div className="space-y-5">
       <div>
-        <h1 className="font-display text-2xl font-bold text-brand-800">Live Sessions</h1>
+        <h1 className="font-display text-2xl font-bold text-black">Live Sessions</h1>
         <p className="text-sm text-muted-foreground">Upcoming classes and gatherings. Let us know you're coming.</p>
       </div>
 

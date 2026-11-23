@@ -45,15 +45,15 @@ export function ToastProvider({ children }: { children: ReactNode }) {
   };
 
   const icons = {
-    success: <CheckCircle2 className="h-5 w-5 text-emerald-500" />,
-    error: <AlertCircle className="h-5 w-5 text-red-500" />,
-    info: <Info className="h-5 w-5 text-blue-500" />,
+    success: <CheckCircle2 className="h-5 w-5 text-success" />,
+    error: <AlertCircle className="h-5 w-5 text-critical" />,
+    info: <Info className="h-5 w-5 text-info" />,
   };
 
   const borderColors = {
-    success: 'border-l-emerald-500',
-    error: 'border-l-red-500',
-    info: 'border-l-blue-500',
+    success: 'border-l-success',
+    error: 'border-l-critical',
+    info: 'border-l-info',
   };
 
   return (

@@ -56,7 +56,7 @@ export default function CoursesAdminPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="font-display text-2xl font-bold text-brand-800">Courses</h1>
+          <h1 className="font-display text-2xl font-bold text-black">Courses</h1>
           <p className="text-sm text-muted-foreground">The Believers Class plus any additional courses. Click a course to view and add its lessons.</p>
         </div>
         <Button className="gap-2" onClick={() => setShowCreate(true)}>

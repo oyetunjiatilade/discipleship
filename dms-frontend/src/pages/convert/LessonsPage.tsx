@@ -23,7 +23,7 @@ const statusConfig = {
     label: 'Completed',
     variant: 'success' as const,
     icon: CheckCircle2,
-    iconColor: 'text-emerald-500',
+    iconColor: 'text-green-500',
   },
   in_progress: {
     label: 'In Progress',
@@ -70,7 +70,7 @@ export default function LessonsPage() {
     <div className="space-y-4">
       <div className="flex items-start justify-between gap-2">
         <div>
-          <h1 className="font-display text-xl font-bold text-brand-800">Lessons</h1>
+          <h1 className="font-display text-xl font-bold text-black">Lessons</h1>
           <p className="text-sm text-muted-foreground">
             {lessons?.length || 0} lesson{(lessons?.length || 0) !== 1 ? 's' : ''}
             {courseId ? '' : ' in the Believers Class'}
@@ -99,7 +99,7 @@ export default function LessonsPage() {
                 <div
                   className={cn(
                     'flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-sm font-bold',
-                    status === 'completed' && 'bg-emerald-100 text-emerald-600',
+                    status === 'completed' && 'bg-green-100 text-green-600',
                     status === 'in_progress' && 'bg-amber-100 text-amber-600',
                     status === 'not_started' && 'bg-gray-100 text-gray-400'
                   )}
@@ -128,7 +128,7 @@ export default function LessonsPage() {
                         <HelpCircle className="h-3 w-3" />
                         Quiz
                         {prog?.quizPassed && (
-                          <CheckCircle2 className="h-3 w-3 text-emerald-500" />
+                          <CheckCircle2 className="h-3 w-3 text-green-500" />
                         )}
                       </span>
                     )}

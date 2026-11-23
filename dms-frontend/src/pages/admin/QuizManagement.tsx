@@ -241,7 +241,7 @@ export default function QuizManagement() {
           >
             <ArrowLeft className="h-4 w-4" /> Back to Lessons
           </Link>
-          <h1 className="font-display text-2xl font-bold text-brand-800">
+          <h1 className="font-display text-2xl font-bold text-black">
             {quiz ? 'Edit Quiz' : 'Create Quiz'}
           </h1>
           <p className="text-sm text-muted-foreground">
@@ -377,7 +377,7 @@ export default function QuizManagement() {
                       className={cn(
                         'flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-2 text-xs font-bold transition-colors',
                         q.correctLabel === opt.label
-                          ? 'border-emerald-500 bg-emerald-500 text-white'
+                          ? 'border-green-500 bg-green-500 text-white'
                           : 'border-gray-300 text-gray-400 hover:border-brand-400'
                       )}
                       title={`Set ${opt.label} as correct answer`}
@@ -416,7 +416,7 @@ export default function QuizManagement() {
                 )}
 
                 <p className="text-xs text-muted-foreground">
-                  <CheckCircle2 className="mr-1 inline h-3 w-3 text-emerald-500" />
+                  <CheckCircle2 className="mr-1 inline h-3 w-3 text-green-500" />
                   Click a letter circle to set the correct answer. Current:{' '}
                   <strong>{q.correctLabel}</strong>
                 </p>

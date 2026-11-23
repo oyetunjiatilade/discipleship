@@ -104,7 +104,7 @@ export default function MentorConvertDetailPage() {
               </div>
             </div>
             <div className="flex shrink-0 gap-2">
-              <a href={waLink(convert.phone)} target="_blank" rel="noreferrer" className="flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-50 text-emerald-600 hover:bg-emerald-100" title="WhatsApp">
+              <a href={waLink(convert.phone)} target="_blank" rel="noreferrer" className="flex h-9 w-9 items-center justify-center rounded-lg bg-green-50 text-green-600 hover:bg-green-100" title="WhatsApp">
                 <MessageCircle className="h-4 w-4" />
               </a>
               <a href={`tel:${convert.phone}`} className="flex h-9 w-9 items-center justify-center rounded-lg bg-gray-100 text-gray-600 hover:bg-gray-200" title="Call">
@@ -177,7 +177,7 @@ export default function MentorConvertDetailPage() {
                   <p className="text-xs font-semibold text-brand-600">{r.lessonTitle}</p>
                   {r.text && <p className="mt-1 whitespace-pre-wrap text-sm text-gray-800">{r.text}</p>}
                   <p className="mt-1 flex items-center gap-1 text-xs text-muted-foreground">
-                    {r.actionStepDone ? <CheckCircle2 className="h-3 w-3 text-emerald-500" /> : <Circle className="h-3 w-3" />}
+                    {r.actionStepDone ? <CheckCircle2 className="h-3 w-3 text-green-500" /> : <Circle className="h-3 w-3" />}
                     Action step {r.actionStepDone ? 'done' : 'not done'} · {fmt(r.updatedAt)}
                   </p>
                 </li>

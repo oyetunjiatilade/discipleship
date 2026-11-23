@@ -92,7 +92,7 @@ export default function SessionsPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="font-display text-2xl font-bold text-brand-800">Live Sessions</h1>
+          <h1 className="font-display text-2xl font-bold text-black">Live Sessions</h1>
           <p className="text-sm text-muted-foreground">Schedule classes, share the link, and track attendance.</p>
         </div>
         <Button className="gap-2" onClick={() => setShowCreate(true)}>

@@ -23,18 +23,19 @@ export default function WelcomePage() {
 
   return (
     <div className="space-y-6 pb-6">
-      <div className="rounded-2xl bg-brand-800 p-6 text-center text-white">
-        <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-700">
+      <div className="relative overflow-hidden rounded-lg border border-gray-200 bg-white p-6 text-center shadow-sm">
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-accent-400 via-flame-orange to-flame-red" aria-hidden />
+        <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-lg bg-black">
           <Sparkles className="h-7 w-7 text-accent-400" />
         </div>
-        <h1 className="font-display text-2xl font-bold">Welcome{firstName ? `, ${firstName}` : ''}! 🎉</h1>
-        <p className="mt-2 text-sm text-brand-100">
+        <h1 className="font-display text-2xl font-bold text-black">Welcome{firstName ? `, ${firstName}` : ''}! 🎉</h1>
+        <p className="mt-2 text-sm text-gray-500">
           We're so glad you're here. This is the beginning of your discipleship journey with Team Barnabas.
         </p>
       </div>
 
       <div>
-        <h2 className="mb-3 font-display text-base font-bold text-brand-800">What to expect</h2>
+        <h2 className="mb-3 font-display text-base font-bold text-black">What to expect</h2>
         <div className="space-y-3">
           {expectations.map((e) => (
             <Card key={e.title}>

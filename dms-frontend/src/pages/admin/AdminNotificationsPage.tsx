@@ -115,7 +115,7 @@ export default function AdminNotificationsPage() {
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <h1 className="font-display text-2xl font-bold text-brand-800">Notifications</h1>
+        <h1 className="font-display text-2xl font-bold text-black">Notifications</h1>
         <p className="text-sm text-muted-foreground">
           Send targeted or broadcast notifications to converts.
         </p>

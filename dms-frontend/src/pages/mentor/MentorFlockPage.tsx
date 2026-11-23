@@ -15,7 +15,7 @@ export default function MentorFlockPage() {
   return (
     <div className="space-y-5">
       <div>
-        <h1 className="font-display text-xl font-bold text-brand-800">People I'm walking with</h1>
+        <h1 className="font-display text-xl font-bold text-black">People I'm walking with</h1>
         <p className="text-sm text-muted-foreground">
           {loading ? 'Loading…' : `${flock?.length || 0} assigned · ${needAttention} need a check-in`}
         </p>

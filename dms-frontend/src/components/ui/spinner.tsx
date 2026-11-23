@@ -16,7 +16,7 @@ const sizes = {
 export function Spinner({ className, size = 'md', label }: SpinnerProps) {
   return (
     <div className={cn('flex flex-col items-center justify-center gap-2', className)}>
-      <Loader2 className={cn('animate-spin text-brand-500', sizes[size])} />
+      <Loader2 className={cn('animate-spin text-brand-400', sizes[size])} />
       {label && <p className="text-sm text-muted-foreground">{label}</p>}
     </div>
   );

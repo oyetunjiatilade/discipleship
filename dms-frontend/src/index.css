@@ -2,31 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Supernatural Life Church design system — see /Brand_Design.md and tailwind.config.ts. */
 @layer base {
   :root {
-    /* Brand palette derived from the Supernatural Life Church logo
-       (flame gradient: red-orange -> gold). See tailwind.config.ts
-       `brand`/`accent` scales for the full ramps these pull from. */
-    --background: 0 0% 98%;
-    --foreground: 20 12% 14%;
+    --background: 0 0% 96%; /* #F5F5F5 surface-canvas */
+    --foreground: 0 0% 9%; /* #171717 text-primary */
     --card: 0 0% 100%;
-    --card-foreground: 20 12% 14%;
+    --card-foreground: 0 0% 9%;
     --popover: 0 0% 100%;
-    --popover-foreground: 20 12% 14%;
-    --primary: 6 78% 46%; /* brand-500 */
+    --popover-foreground: 0 0% 9%;
+    --primary: 17 88% 40%; /* #C2410C ember (brand-500) — AA with white text */
     --primary-foreground: 0 0% 100%;
-    --secondary: 30 20% 95%;
-    --secondary-foreground: 20 12% 14%;
-    --muted: 30 15% 96%;
-    --muted-foreground: 20 8% 45%;
-    --accent: 36 88% 53%; /* accent-500 */
-    --accent-foreground: 20 12% 14%; /* dark text on gold, matching the logo */
-    --destructive: 0 72% 51%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%; /* #737373 text-secondary */
+    --accent: 35 96% 64%; /* #FBB24A primary amber */
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 72% 51%; /* #DC2626 status-critical */
     --destructive-foreground: 0 0% 100%;
-    --border: 30 15% 88%;
-    --input: 30 15% 88%;
-    --ring: 6 78% 46%;
-    --radius: 0.5rem;
+    --border: 0 0% 90%; /* #E5E5E5 hairline */
+    --input: 0 0% 90%;
+    --ring: 35 96% 64%; /* amber focus halo */
+    --radius: 0.5rem; /* cards 8px; inputs/buttons 6px; tags 4px */
   }
 }
 
@@ -34,9 +32,90 @@
   * {
     border-color: hsl(var(--border));
   }
+  html {
+    color-scheme: light;
+  }
   body {
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
+  }
+  /* Tabular figures for tallies, rates and counts so columns align. */
+  table {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /*
+   * Native form controls styled by @tailwindcss/forms default to a blue focus ring and a
+   * mid-grey border. Re-skin them to the guide (hairline border, flame-orange focus with a soft
+   * halo). Same selectors as the plugin so this wins over it but still loses to utility classes.
+   */
+  [type='text'],
+  input:where(:not([type])),
+  [type='email'],
+  [type='url'],
+  [type='password'],
+  [type='number'],
+  [type='date'],
+  [type='datetime-local'],
+  [type='month'],
+  [type='search'],
+  [type='tel'],
+  [type='time'],
+  [type='week'],
+  [multiple],
+  textarea,
+  select {
+    border-color: theme('colors.gray.200');
+    border-radius: theme('borderRadius.md');
+    color: theme('colors.gray.900');
+  }
+  [type='text']:focus,
+  input:where(:not([type])):focus,
+  [type='email']:focus,
+  [type='url']:focus,
+  [type='password']:focus,
+  [type='number']:focus,
+  [type='date']:focus,
+  [type='datetime-local']:focus,
+  [type='month']:focus,
+  [type='search']:focus,
+  [type='tel']:focus,
+  [type='time']:focus,
+  [type='week']:focus,
+  [multiple]:focus,
+  textarea:focus,
+  select:focus {
+    --tw-ring-color: rgba(244, 127, 54, 0.15);
+    --tw-ring-offset-shadow: 0 0 #0000;
+    --tw-ring-shadow: 0 0 0 3px var(--tw-ring-color);
+    border-color: theme('colors.brand.400');
+  }
+  input::placeholder,
+  textarea::placeholder {
+    color: theme('colors.gray.400');
+  }
+
+  /* Checkboxes & radios: 1.5px #D4D4D4 border, ember fill when checked (white tick stays AA). */
+  [type='checkbox'],
+  [type='radio'] {
+    color: theme('colors.brand.500');
+    border-color: theme('colors.gray.300');
+    border-width: 1.5px;
+  }
+  [type='checkbox'] {
+    border-radius: theme('borderRadius.sm');
+  }
+  [type='checkbox']:focus,
+  [type='radio']:focus {
+    --tw-ring-color: theme('colors.accent.400');
+    --tw-ring-offset-color: #ffffff;
+  }
+}
+
+@layer components {
+  /* Display/headline roles carry the guide's tighter tracking. */
+  .font-display {
+    letter-spacing: -0.015em;
   }
 }
 

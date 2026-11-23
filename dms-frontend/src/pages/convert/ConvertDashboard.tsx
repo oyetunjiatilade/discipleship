@@ -16,7 +16,7 @@ import {
   BookOpen,
   Trophy,
   TrendingUp,
-  CheckCircle2,
+  Check,
   ChevronRight,
   Bell,
   Play,
@@ -61,21 +61,20 @@ export default function ConvertDashboard() {
   return (
     <div className="space-y-6">
       {/* ── Welcome Banner ── */}
-      <div className="relative overflow-hidden rounded-xl bg-gradient-to-br from-brand-500 via-brand-600 to-brand-700 p-5 text-white shadow-lg shadow-brand-500/20">
-        <div className="pointer-events-none absolute -right-6 -top-6 h-32 w-32 rounded-full bg-white/5" />
-        <div className="pointer-events-none absolute -bottom-4 -right-2 h-24 w-24 rounded-full bg-white/5" />
+      <div className="relative overflow-hidden rounded-lg border border-gray-200 bg-white p-5 shadow-sm">
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-accent-400 via-flame-orange to-flame-red" aria-hidden />
         <div className="relative">
-          <h1 className="font-display text-xl font-bold">
+          <h1 className="font-display text-xl font-bold text-black">
             Welcome back, {user?.firstName}!
           </h1>
-          <p className="mt-1 text-sm text-brand-100">
+          <p className="mt-1 text-sm text-gray-500">
             Continue your discipleship journey. Every step counts.
           </p>
           {unread !== null && unread > 0 && (
             <Button
-              variant="secondary"
+              variant="outline"
               size="sm"
-              className="mt-3 gap-2 bg-white/15 text-white hover:bg-white/25"
+              className="mt-3 gap-2"
               onClick={() => navigate('/notifications')}
             >
               <Bell className="h-3.5 w-3.5" />
@@ -101,26 +100,28 @@ export default function ConvertDashboard() {
                 <div key={stage} className="flex flex-1 flex-col items-center gap-1.5">
                   <div className="flex w-full items-center">
                     {idx > 0 && (
-                      <div className={cn('h-0.5 flex-1', idx <= currentIdx ? 'bg-emerald-400' : 'bg-gray-200')} />
+                      <div className={cn('h-0.5 flex-1', idx <= currentIdx ? 'bg-brand-400' : 'bg-gray-200')} />
                     )}
+                    {/* Guide milestone tracker: done = filled flame node + check, current = hollow
+                        flame ring, upcoming = neutral. Fill uses ember so the white check stays legible. */}
                     <div
                       className={cn(
-                        'relative flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-2 text-xs font-bold transition-all',
-                        isComplete && 'border-emerald-500 bg-emerald-500 text-white',
-                        isCurrent && 'border-brand-500 bg-brand-50 text-brand-600 ring-4 ring-brand-100',
-                        !isComplete && !isCurrent && 'border-gray-200 bg-gray-50 text-gray-400'
+                        'relative flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-2 text-xs font-bold tabular-nums transition-all',
+                        isComplete && 'border-brand-500 bg-brand-500 text-white',
+                        isCurrent && 'border-brand-400 bg-white text-brand-500',
+                        !isComplete && !isCurrent && 'border-gray-200 bg-gray-200 text-gray-500'
                       )}
                     >
-                      {isComplete ? <CheckCircle2 className="h-4 w-4" /> : idx + 1}
+                      {isComplete ? <Check className="h-4 w-4" strokeWidth={3} /> : idx + 1}
                     </div>
                     {idx < STAGE_ORDER.length - 1 && (
-                      <div className={cn('h-0.5 flex-1', idx < currentIdx ? 'bg-emerald-400' : 'bg-gray-200')} />
+                      <div className={cn('h-0.5 flex-1', idx < currentIdx ? 'bg-brand-400' : 'bg-gray-200')} />
                     )}
                   </div>
                   <span
                     className={cn(
-                      'text-center text-[10px] font-medium leading-tight',
-                      isCurrent ? 'text-brand-600' : isComplete ? 'text-emerald-600' : 'text-gray-400'
+                      'text-center text-[10px] leading-tight',
+                      isCurrent ? 'font-semibold text-black' : isComplete ? 'font-medium text-gray-900' : 'font-medium text-gray-500'
                     )}
                   >
                     {STAGE_LABELS[stage]}
@@ -137,7 +138,7 @@ export default function ConvertDashboard() {
         {[
           { icon: BookOpen, color: 'text-brand-400', value: summary ? `${summary.completedLessons}/${summary.totalLessons}` : '—', label: 'Lessons' },
           { icon: Trophy, color: 'text-accent-400', value: summary ? `${summary.percentComplete}%` : '—', label: 'Complete' },
-          { icon: TrendingUp, color: 'text-emerald-400', value: String(summary?.inProgressLessons ?? '—'), label: 'In Progress' },
+          { icon: TrendingUp, color: 'text-green-400', value: String(summary?.inProgressLessons ?? '—'), label: 'In Progress' },
         ].map((s) => (
           <Card key={s.label}>
             <CardContent className="flex flex-col items-center p-4 text-center">
@@ -145,7 +146,7 @@ export default function ConvertDashboard() {
               {summaryLoading ? (
                 <Skeleton className="mt-2 h-8 w-12" />
               ) : (
-                <p className="mt-2 font-display text-2xl font-bold text-brand-800">{s.value}</p>
+                <p className="mt-2 font-display text-2xl font-bold text-black">{s.value}</p>
               )}
               <p className="text-xs text-muted-foreground">{s.label}</p>
             </CardContent>
@@ -163,7 +164,7 @@ export default function ConvertDashboard() {
             </div>
             <div className="mt-2 h-3 overflow-hidden rounded-full bg-gray-100">
               <div
-                className="h-full rounded-full bg-gradient-to-r from-brand-400 to-brand-600 transition-all duration-700"
+                className="h-full rounded-full bg-brand-400 transition-all duration-700"
                 style={{ width: `${summary.percentComplete}%` }}
               />
             </div>
@@ -191,7 +192,7 @@ export default function ConvertDashboard() {
                 <Play className="h-4 w-4" />
               </div>
               <div className="min-w-0 flex-1">
-                <p className="truncate text-sm font-semibold text-brand-800">{nextLesson.title}</p>
+                <p className="truncate text-sm font-semibold text-gray-900">{nextLesson.title}</p>
                 <p className="text-xs text-muted-foreground">
                   {nextLesson.estimatedMinutes ? `${nextLesson.estimatedMinutes} min` : 'Continue lesson'}
                   {nextLesson.hasQuiz && ' · Has quiz'}
@@ -202,7 +203,7 @@ export default function ConvertDashboard() {
           ) : summary?.isComplete ? (
             <div className="py-6 text-center">
               <Trophy className="mx-auto h-10 w-10 text-accent-400" />
-              <p className="mt-2 font-display text-lg font-bold text-brand-800">Course Complete!</p>
+              <p className="mt-2 font-display text-lg font-bold text-black">Course Complete!</p>
               <p className="text-sm text-muted-foreground">Congratulations on finishing all lessons.</p>
             </div>
           ) : (

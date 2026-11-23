@@ -46,7 +46,7 @@ export function FlockList({ members, onSelect }: { members: FlockMember[]; onSel
               </div>
               <div className="flex shrink-0 gap-2">
                 <a href={waLink(m.phone)} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()}
-                   className="flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-50 text-emerald-600 hover:bg-emerald-100" title="WhatsApp">
+                   className="flex h-9 w-9 items-center justify-center rounded-lg bg-green-50 text-green-600 hover:bg-green-100" title="WhatsApp">
                   <MessageCircle className="h-4 w-4" />
                 </a>
                 <a href={`tel:${m.phone}`} onClick={(e) => e.stopPropagation()} className="flex h-9 w-9 items-center justify-center rounded-lg bg-gray-100 text-gray-600 hover:bg-gray-200" title="Call">

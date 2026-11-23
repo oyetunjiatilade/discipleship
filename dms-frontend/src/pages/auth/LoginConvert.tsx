@@ -53,9 +53,9 @@ export default function LoginConvert() {
   };
 
   return (
-    <Card className="border-0 shadow-xl shadow-brand-100/50">
+    <Card className="shadow-sm">
       <CardHeader className="text-center">
-        <CardTitle className="font-display text-2xl text-brand-800">Welcome Back</CardTitle>
+        <CardTitle className="font-display text-2xl text-black">Welcome Back</CardTitle>
         <CardDescription>
           {step === 'phone'
             ? 'Enter your phone number to receive a login code'

@@ -162,7 +162,7 @@ export default function RegisterConvert() {
                 idx === currentStepIdx
                   ? 'bg-brand-500 text-white'
                   : idx < currentStepIdx
-                    ? 'bg-emerald-100 text-emerald-700'
+                    ? 'bg-green-100 text-green-700'
                     : 'bg-gray-100 text-gray-400'
               )}
             >

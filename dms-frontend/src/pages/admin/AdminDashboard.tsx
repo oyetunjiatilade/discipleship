@@ -14,19 +14,19 @@ import { cn } from '@/lib/utils';
 import { STAGE_LABELS, type DiscipleshipStage } from '@/constants/enums';
 
 const stageColors: Record<string, string> = {
-  NEW_CONVERT: 'bg-sky-100 text-sky-700',
+  NEW_CONVERT: 'bg-blue-100 text-blue-700',
   HOLY_SPIRIT_FILLED: 'bg-purple-100 text-purple-700',
   IN_CLASS: 'bg-amber-100 text-amber-700',
-  CLASS_COMPLETED: 'bg-emerald-100 text-emerald-700',
+  CLASS_COMPLETED: 'bg-green-100 text-green-700',
   BAPTIZED: 'bg-brand-100 text-brand-700',
   MEMBER_TRANSFERRED: 'bg-accent-100 text-accent-700',
 };
 
 const stageBarColors: Record<string, string> = {
-  NEW_CONVERT: 'bg-sky-400',
+  NEW_CONVERT: 'bg-blue-400',
   HOLY_SPIRIT_FILLED: 'bg-purple-400',
   IN_CLASS: 'bg-amber-400',
-  CLASS_COMPLETED: 'bg-emerald-400',
+  CLASS_COMPLETED: 'bg-green-400',
   BAPTIZED: 'bg-brand-400',
   MEMBER_TRANSFERRED: 'bg-accent-400',
 };
@@ -53,8 +53,8 @@ export default function AdminDashboard() {
       label: 'New This Week',
       value: stats?.newThisWeek ?? '—',
       icon: UserPlus,
-      color: 'text-emerald-500',
-      bg: 'bg-emerald-50',
+      color: 'text-green-500',
+      bg: 'bg-green-50',
     },
     {
       label: 'New This Month',
@@ -76,7 +76,7 @@ export default function AdminDashboard() {
     <div className="space-y-6">
       {/* Page Title */}
       <div>
-        <h1 className="font-display text-2xl font-bold text-brand-800">Dashboard</h1>
+        <h1 className="font-display text-2xl font-bold text-black">Dashboard</h1>
         <p className="text-sm text-muted-foreground">
           Overview of your discipleship program.
         </p>

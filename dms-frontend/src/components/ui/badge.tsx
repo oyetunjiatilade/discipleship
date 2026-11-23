@@ -3,17 +3,18 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 
 const badgeVariants = cva(
-  'inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2',
+  // Guide: status tags are compact 4px-radius labels (label-md); colour never stands alone — always text.
+  'inline-flex items-center rounded-sm border px-2 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2',
   {
     variants: {
       variant: {
-        default: 'border-transparent bg-brand-500 text-white',
-        secondary: 'border-transparent bg-secondary text-secondary-foreground',
-        destructive: 'border-transparent bg-destructive text-destructive-foreground',
-        outline: 'text-foreground',
-        success: 'border-transparent bg-emerald-100 text-emerald-800',
-        warning: 'border-transparent bg-amber-100 text-amber-800',
-        info: 'border-transparent bg-sky-100 text-sky-800',
+        default: 'border-brand-200 bg-brand-50 text-brand-700',
+        secondary: 'border-gray-200 bg-gray-100 text-gray-700',
+        destructive: 'border-critical-border bg-critical-subtle text-critical',
+        outline: 'border-gray-200 text-gray-900',
+        success: 'border-success-border bg-success-subtle text-success',
+        warning: 'border-warning-border bg-warning-subtle text-warning-text',
+        info: 'border-info-border bg-info-subtle text-info',
       },
     },
     defaultVariants: {

@@ -19,7 +19,7 @@ export default function AdminFollowUpPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="font-display text-2xl font-bold text-brand-800">Needs Follow-up</h1>
+        <h1 className="font-display text-2xl font-bold text-black">Needs Follow-up</h1>
         <p className="text-sm text-muted-foreground">
           Converts who've gone quiet, ranked by days of silence. Reach out — a message goes a long way.
         </p>
@@ -38,7 +38,7 @@ export default function AdminFollowUpPage() {
       ) : (rows || []).length === 0 ? (
         <Card>
           <CardContent className="flex flex-col items-center gap-2 py-16 text-center">
-            <CheckCircle2 className="h-10 w-10 text-emerald-400" />
+            <CheckCircle2 className="h-10 w-10 text-green-400" />
             <p className="text-sm font-medium text-gray-600">Everyone's engaged — nobody needs follow-up right now.</p>
           </CardContent>
         </Card>
@@ -63,7 +63,7 @@ export default function AdminFollowUpPage() {
                 </div>
                 <div className="flex shrink-0 items-center gap-2">
                   <a href={waLink(r.phone)} target="_blank" rel="noreferrer"
-                     className="flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-50 text-emerald-600 hover:bg-emerald-100" title="WhatsApp">
+                     className="flex h-9 w-9 items-center justify-center rounded-lg bg-green-50 text-green-600 hover:bg-green-100" title="WhatsApp">
                     <MessageCircle className="h-4 w-4" />
                   </a>
                   <Button variant="outline" size="sm" onClick={() => setManaging({ id: r.id, name: `${r.firstName} ${r.lastName}` })}>

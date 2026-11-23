@@ -132,7 +132,7 @@ export function UsersTable({
                           className={cn(
                             'h-full rounded-full transition-all',
                             c.completionPercentage >= 100
-                              ? 'bg-emerald-500'
+                              ? 'bg-green-500'
                               : c.completionPercentage >= 50
                                 ? 'bg-brand-500'
                                 : 'bg-amber-400'
@@ -145,7 +145,7 @@ export function UsersTable({
                       className={cn(
                         'min-w-[3rem] text-right text-xs font-bold',
                         c.completionPercentage >= 100
-                          ? 'text-emerald-600'
+                          ? 'text-green-600'
                           : 'text-gray-600'
                       )}
                     >

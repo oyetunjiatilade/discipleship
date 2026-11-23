@@ -43,12 +43,12 @@ export default function LoginMentor() {
   };
 
   return (
-    <Card className="border-0 shadow-xl shadow-brand-100/50">
+    <Card className="shadow-sm">
       <CardHeader className="text-center">
-        <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-800 shadow-lg shadow-brand-800/30">
+        <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-lg bg-black">
           <HeartHandshake className="h-7 w-7 text-accent-400" />
         </div>
-        <CardTitle className="font-display text-2xl text-brand-800">Mentor Login</CardTitle>
+        <CardTitle className="font-display text-2xl text-black">Mentor Login</CardTitle>
         <CardDescription>Sign in to see the people you're walking with</CardDescription>
       </CardHeader>
 

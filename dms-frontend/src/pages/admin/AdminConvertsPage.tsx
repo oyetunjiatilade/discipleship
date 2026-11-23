@@ -137,7 +137,7 @@ export default function AdminConvertsPage() {
       {/* Page Header */}
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="font-display text-2xl font-bold text-brand-800">Converts</h1>
+          <h1 className="font-display text-2xl font-bold text-black">Converts</h1>
           <p className="text-sm text-muted-foreground">
             {meta ? `${meta.total} convert${meta.total !== 1 ? 's' : ''} total` : 'Manage all converts'}
           </p>

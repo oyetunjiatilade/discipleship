@@ -139,7 +139,7 @@ export default function LessonDetail() {
       {/* ── Title + Status ── */}
       <div className="flex items-start justify-between gap-3">
         <div>
-          <h1 className="font-display text-xl font-bold text-brand-800">
+          <h1 className="font-display text-xl font-bold text-black">
             {lesson.title}
           </h1>
           <div className="mt-1 flex items-center gap-2 text-xs text-muted-foreground">
@@ -333,11 +333,11 @@ export default function LessonDetail() {
               <div
                 className={cn(
                   'flex h-10 w-10 items-center justify-center rounded-lg',
-                  quizPassed ? 'bg-emerald-100' : 'bg-brand-100'
+                  quizPassed ? 'bg-green-100' : 'bg-brand-100'
                 )}
               >
                 {quizPassed ? (
-                  <CheckCircle2 className="h-5 w-5 text-emerald-600" />
+                  <CheckCircle2 className="h-5 w-5 text-green-600" />
                 ) : (
                   <HelpCircle className="h-5 w-5 text-brand-600" />
                 )}
@@ -428,7 +428,7 @@ export default function LessonDetail() {
         )}
 
         {status === 'completed' && (
-          <div className="flex items-center justify-center gap-2 rounded-lg bg-emerald-50 p-3 text-sm font-medium text-emerald-700">
+          <div className="flex items-center justify-center gap-2 rounded-lg bg-green-50 p-3 text-sm font-medium text-green-700">
             <CheckCircle2 className="h-5 w-5" />
             Lesson completed
           </div>
